@@ -1,0 +1,11 @@
+zmq==0.0.0
+tensorboardx==2.6
+gym==0.26.2
+flatten_dict==0.4.2
+pandas==1.5.3
+wandb==0.13.10
+aiozmq==1.0.0
+pytypes==1.0b10
+msgpack_numpy==0.4.8
+transforms3d==0.4.1
+matplotlib==3.7.1

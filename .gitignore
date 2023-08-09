@@ -1,0 +1,16 @@
+*.pyc
+__pycache__
+*.egg-info/
+/build/
+/dist/
+/result
+.venv*
+*.log
+core
+___*.py
+___*
+.idea
+.envrc
+.direnv
+*.txt
+*.json
