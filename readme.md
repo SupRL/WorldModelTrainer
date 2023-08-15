@@ -17,6 +17,7 @@
 - requirements.txt: 依赖包列表
 
 ## 2. 环境配置
+- 操作系统：Ubuntu 20.04
 - GPU驱动和CUDA安装：如果需要用GPU训练模型，需要安装NVIDIA驱动，CUDA和cuDNN，具体安装方法请参考[PyTorch官网](https://pytorch.org/get-started/locally/)
 - python版本：python3.8
 - 依赖包安装：pip install -r requirements.txt
