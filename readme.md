@@ -1,5 +1,9 @@
 # 挖掘机液压转移模型训练竞赛示范代码
 
+## 更新日志
+### 2023.8.16
+#### 评测代码说明
+[test_environment.txt](./test_environment.txt) 评测代码环境支持的包的版本，提交评测代码时需要检查其中用到的python包是否在该列表中，暂时不支持在提交的评测代码中用到其中不包括的包，否则可能会导致评测失败。
 ## 1. 代码结构
 - src: 代码文件夹
   - train.py: 训练示范代码，包含了数据的载入，模型训练，模型保存等功能
@@ -15,6 +19,7 @@
   - predict.py: 模型评估示范代码，组织方根据该文件进行模型评估
     - state_predict： 模型预测函数，**参赛者提交的代码中必须实现此函数，组织方调用此函数进行模型评估**
 - requirements.txt: 依赖包列表
+- test_environment.txt: 评测环境依赖包列表
 
 ## 2. 环境配置
 - 操作系统：Ubuntu 20.04
@@ -64,7 +69,7 @@
 ## 4. 提交说明
 - 日常评测提交代码说明
   - 代码提交：参赛者需要维护一个私有github仓库，并将组织方的github账号（superdi424@gmail.com）作为[协作者添加到仓库中](https://docs.github.com/zh/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)，该仓库用于存放参赛者的代码，组织方会在参赛者每次在赛事网站上进行提交操作后，自动从参赛者的git仓库中拉取代码，进行模型评估
-  - 评测代码：参赛者需要将和模型评测相关的文件统一放在commit文件下，其中需要包括predict.py文件，在predcit.py文件中需要实现state_predict函数，评测时会直接调用该函数做模型评估，函数的输入输出需要满足[规范](./commit/predict.py)，[predict.py](./src/predict.py)为官方提供的参考实现示例，参赛者可以根据自己的需要进行修改
+  - 评测代码：参赛者需要将和模型评测相关的文件统一放在commit文件下，其中需要包括predict.py文件，在predcit.py文件中需要实现state_predict函数，评测时会直接调用该函数做模型评估，函数的输入输出需要满足[规范](./commit/predict.py)，[predict.py](./src/predict.py)为官方提供的参考实现示例，参赛者可以根据自己的需要进行修改；选手提交的代码中所导入的包在评测[支持的包列表](./test_environment.txt)内，否则可能会导致评测失败。
   - 模型权重文件：参赛者需要提交一个模型权重文件，该文件用于模型评估，模型文件放在github仓库commit文件夹下，第一阶段模型大小限制为100M以内，评测时会进行检查，不通过直接判定提交失败
   - 依赖包列表：如果有本文档中说明的依赖包以外的依赖包，参赛者需要提交一个requirements.txt文件，该文件用于安装参赛者代码所需的依赖包，原则上不建议使用额外的依赖包
   - 代码说明【推荐】：参赛者需要提交一个README.md文件，该文件用于说明参赛者的代码，包括但不限于模型结构、模型训练方法、模型评估方法等
