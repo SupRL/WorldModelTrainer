@@ -5,7 +5,8 @@ def state_predict(states:torch.Tensor, actions:torch.Tensor, timesteps:torch.Ten
     
     """
     
-    输入状态时间序列(序列长度为20), 预测下一个时刻(t=21)的state
+    输入状态时间序列(序列长度为20), 预测下一个时刻(t=21)的state;
+    注意:输入输出均为原始状态
 
     Args:
         states (torch.tensor): 状态
@@ -16,7 +17,7 @@ def state_predict(states:torch.Tensor, actions:torch.Tensor, timesteps:torch.Ten
         action_columns: action中每一个维度的物理含义
         device
     return:
-        next_states(torch.tensor)
+        next_states(torch.tensor), 请使用float32类型的tensor
         
     example usage:
     
