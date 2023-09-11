@@ -1,10 +1,13 @@
 # 挖掘机液压转移模型训练竞赛示范代码
 
 ## 更新日志
-### 2023.8.17
+### 2023.09.07
+#### 新增第二阶段相关说明
+更新第二阶段数据集下载链接以及代码提交要求
+### 2023.08.17
 #### 新增末端位置计算方式
 在[辅助代码]((./src/utils.py))中增加了函数 excavator_arm_fk 用于计算末端位置坐标，方便选手在本地测试末端误差
-### 2023.8.16
+### 2023.08.16
 #### 评测代码说明
 [test_environment.txt](./test_environment.txt) 评测代码环境支持的包的版本，提交评测代码时需要检查其中用到的python包是否在该列表中，暂时不支持在提交的评测代码中用到其中不包括的包，否则可能会导致评测失败。
 ## 1. 代码结构
@@ -34,7 +37,7 @@
 - transformers安装：pip install transformers==4.29.0
 
 ## 3. 数据集
-- 数据集下载：[数据下载链接](https://yeying-gateway.apps-fp.danlu.netease.com/xiyin/release_data.zip?Signature=9oUjukwmkN%2F8qkBt9df1KoYFZFg%3D&Expires=4845006516&AWSAccessKeyId=HU4J73EY50QM95RMYOGM)
+- 第二阶段数据集下载：[数据下载链接](https://yeying-gateway.apps-fp.danlu.netease.com/xiyin/release_data.zip?Signature=9oUjukwmkN%2F8qkBt9df1KoYFZFg%3D&Expires=4845006516&AWSAccessKeyId=HU4J73EY50QM95RMYOGM)
 - 数据集说明：数据集包含了训练数据和验证数据
   - 训练数据：包含了训练数据和数据标签，训练数据用于模型训练
   - 验证数据：包含了验证数据和数据标签，验证数据用于模型调参，**也可以用于模型训练**
@@ -71,11 +74,11 @@
   - action_time: 发出PWM信号后多久收到了pos，vel等信息（单位：秒） 
 ## 4. 提交说明
 - 日常评测提交代码说明
-  - 代码提交：参赛者需要维护一个私有github仓库，并将组织方的github账号（superdi424@gmail.com）作为[协作者添加到仓库中](https://docs.github.com/zh/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)，该仓库用于存放参赛者的代码，组织方会在参赛者每次在赛事网站上进行提交操作后，自动从参赛者的git仓库中拉取代码，进行模型评估
+  - 代码提交：参赛者需要将提交代码打包成zip格式，通过赛事系统提交，第二阶段开始后，将会在每个队伍的后台管理界面中提供提交入口, 压缩包总大小不超过1GB;
   - 评测代码：参赛者需要将和模型评测相关的文件统一放在commit文件下，其中需要包括predict.py文件，在predcit.py文件中需要实现state_predict函数，评测时会直接调用该函数做模型评估，函数的输入输出需要满足[规范](./commit/predict.py)，[predict.py](./src/predict.py)为官方提供的参考实现示例，参赛者可以根据自己的需要进行修改；选手提交的代码中所导入的包在评测[支持的包列表](./test_environment.txt)内，否则可能会导致评测失败。
-  - 模型权重文件：参赛者需要提交一个模型权重文件，该文件用于模型评估，模型文件放在github仓库commit文件夹下，第一阶段模型大小限制为100M以内，评测时会进行检查，不通过直接判定提交失败
-  - 依赖包列表：如果有本文档中说明的依赖包以外的依赖包，参赛者需要提交一个requirements.txt文件，该文件用于安装参赛者代码所需的依赖包，原则上不建议使用额外的依赖包
-  - 代码说明【推荐】：参赛者需要提交一个README.md文件，该文件用于说明参赛者的代码，包括但不限于模型结构、模型训练方法、模型评估方法等
+  - 模型评测：第二阶段中进行模型评测时，每个样本的序列长度提升为512;
+  - 模型权重文件：参赛者需要提交一个模型权重文件，该文件用于模型评估，模型文件放在commit文件夹下;
+  - 代码说明【推荐】：参赛者需要提交一个README.md文件，该文件用于说明参赛者的代码，包括但不限于模型结构、模型训练方法、模型评估方法等;
 - 复核阶段评测提交代码说明（具体开始和截止日期以及提交方式请关注赛事网站公告）
   - 训练代码：参赛者需要提交一个train.py文件，该文件内需要实现模型训练的代码，参赛者可以根据自己的需要进行修改
   - 依赖包列表：如果有本文档中说明的依赖包以外的依赖包，参赛者需要提交一个requirements.txt文件，该文件用于安装参赛者代码所需的依赖包，原则上不建议使用额外的依赖包

@@ -1,18 +1,18 @@
 import torch
 
 # 函数格式
-def state_predict(states:torch.Tensor, actions:torch.Tensor, timesteps:torch.Tensor, mask:torch.Tensor, device, state_columns, action_columns) -> torch.Tensor:
+def state_predict(states:torch.Tensor, actions:torch.Tensor, timesteps:torch.Tensor, masks:torch.Tensor, device, state_columns, action_columns) -> torch.Tensor:
     
     """
     
-    输入状态时间序列(序列长度为20), 预测下一个时刻(t=21)的state;
+    输入状态时间序列(序列长度为512), 预测下一个时刻(t=513)的state;
     注意:输入输出均为原始状态
 
     Args:
         states (torch.tensor): 状态
         actions (torch.tensor): 动作
         timesteps (torch.tensor): 时间步
-        mask (torch.tensor): 掩码
+        masks (torch.tensor): 掩码
         state_columns: state中每一个维度的物理含义
         action_columns: action中每一个维度的物理含义
         device

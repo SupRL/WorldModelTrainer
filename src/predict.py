@@ -131,7 +131,9 @@ pwm_min_max = {'boom': {"negative": [-800, -250], "positive": [250, 800]},
                     'swing': {"negative": [-450, -180], "positive": [180, 450]}}
 
 def state_predict(states, actions, timesteps, masks, device, state_columns, action_columns):
-    
+
+    max_seq_length = 20
+
     # note: 由于输入的是数据集中的原始数据，因此如果在训练过程中对数据做了归一化处理，则需要在该函数中对数据做归一化处理
     for index, key in enumerate(state_columns):
         value = states[:,:,index]
@@ -146,10 +148,10 @@ def state_predict(states, actions, timesteps, masks, device, state_columns, acti
         actions[:,:,index] = ((value - pwm_min_max[joint]["positive"][0]) / (pwm_min_max[joint]["positive"][1] - pwm_min_max[joint]["positive"][0]) * (value > 0)
                             + (value - pwm_min_max[joint]["negative"][0]) / (pwm_min_max[joint]["negative"][1] - pwm_min_max[joint]["negative"][0]) * (value < 0))
         
-    states = states.to(device)
-    actions = actions.to(device)
-    timesteps = timesteps.to(device)
-    masks = masks.to(device)
+    states = states[:, -max_seq_length:,:].to(device)
+    actions = actions[:, -max_seq_length:,:].to(device)
+    timesteps = timesteps[:, -max_seq_length:].to(device)
+    masks = masks[:, -max_seq_length:].to(device)
     model.to(device)
     model_output = model(states, actions, timesteps, masks)
     next_state = model_output['state_preds'][:,-1,:].unsqueeze(1)
