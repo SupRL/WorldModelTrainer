@@ -37,7 +37,7 @@
 - transformers安装：pip install transformers==4.29.0
 
 ## 3. 数据集
-- 第二阶段数据集下载：[数据下载链接](https://yeying-gateway.apps-fp.danlu.netease.com/xiyin/release_data.zip?Signature=9oUjukwmkN%2F8qkBt9df1KoYFZFg%3D&Expires=4845006516&AWSAccessKeyId=HU4J73EY50QM95RMYOGM)
+- 第二阶段数据集下载：[数据下载链接](https://cdn.fuxi.netease.com/yaotai/zhongbao/xiyin/static/stage2_data.zip?auth_key=2640163109-0-0-ac11630e9611910fb017b83b62e99b0e)
 - 数据集说明：数据集包含了训练数据和验证数据
   - 训练数据：包含了训练数据和数据标签，训练数据用于模型训练
   - 验证数据：包含了验证数据和数据标签，验证数据用于模型调参，**也可以用于模型训练**
